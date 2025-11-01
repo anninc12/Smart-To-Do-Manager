@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Add New Task - SmartToDo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/Task-Manager.css">
+</head>
+
+<body>
+    <header>
+        <div class="container1">
+            <nav>
+                <div class="nav-left">
+                    <h1>✅ <span style="color:#0047b3;"> Smart </span><span style="color:#28a745;"> ToDo</span></h1>
+                </div>
+                <ul class="links">
+                    <li><a href="../HTML/index.html" target="_blank">Home</a></li>
+                    <li><a href="../HTML/Features.html" target="_blank">Features</a></li>
+                    <li><a href="../HTML/about.html" target="_blank">About</a></li>
+                </ul>
+                <div class="header-btn">
+                    <a href="../HTML/Task-Manager.html" style="text-decoration: none;">
+                        <i class="fas fa-arrow-left"></i> Back to Tasks
+                    </a>
+                    <a href="#" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                window.location.href = '../HTML/index.html';
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = '../HTML/index.html';
+        }
+    </script>
+
+    <main class="add-task-main">
+        <div class="add-task-form-container">
+            <!-- MOVED TITLE AND DESCRIPTION INSIDE THE FORM CONTAINER -->
+            <div class="form-header-inside">
+                <h1>Add New Task</h1>
+                <p>Create a new task to stay organized and productive</p>
+            </div>
+
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskTitle"> Task Title *</label>
+                    <input type="text" id="taskTitle" name="taskTitle" required placeholder="Enter task title">
+                </div>
+
+                <div class="form-group">
+                    <label for="taskDescription"> Description</label>
+                    <textarea id="taskDescription" name="taskDescription" rows="4"
+                        placeholder="Enter task description"></textarea>
+                </div>
+
+                <!-- CHANGED TO VERTICAL LAYOUT - PRIORITY BELOW CATEGORY -->
+                <div class="form-group">
+                    <label for="taskCategory">Category</label>
+                    <select id="taskCategory" name="taskCategory">
+                        <option value="Work">Work</option>
+                        <option value="Personal" selected>Personal</option>
+                        <option value="Study">Study</option>
+                        <option value="Health">Health</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority" name="taskPriority">
+                        <option value="High">High</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="taskDueDate">Due Date</label>
+                    <input type="date" id="taskDueDate" name="taskDueDate">
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                    <button type="button" class="cancel-btn" onclick="window.location.href='Task-Manager.html'">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" style=" display:none; 
+            position: fixed; 
+            bottom: 20px; 
+            right: 40px; 
+            background-color: #28a745; 
+            color: white; 
+            padding: 15px 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+            z-index: 1000;
+            width: auto;
+            ">
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="../js/add-task.js"></script>
+</body>
+
+</html>

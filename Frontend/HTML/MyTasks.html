@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Tasks - SmartToDo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/Task-Manager.css">
+</head>
+
+<body>
+    <header>
+        <div class="container1">
+            <nav>
+                <div class="nav-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <h1>✅<span style="color:#0047b3;">Smart</span><span style="color:#28a745;">ToDo</span></h1>
+                </div>
+                <ul class="links">
+                    <li><a href="../HTML/index.html">Home</a></li>
+                    <li><a href="../HTML/Features.html" target="_blank">Features</a></li>
+                    <li><a href="../HTML/about.html">About</a></li>
+                </ul>
+                <div class="header-btn">
+                    <a href="../HTML/Task-Manager.html" style="text-decoration: none;">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </a>
+                    <a href="#" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                window.location.href = '../HTML/index.html';
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = '../HTML/index.html';
+        }
+    </script>
+
+    <aside class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="../HTML/Task-Manager.html">📋 Dashboard</a></li>
+            <li><a href="../HTML/Add-Task.html">🎯 Add Tasks</a></li>
+            <li><a href="../HTML/my-tasks.html">📂 My Tasks</a></li>
+            <li><a href="../HTML/index.html" onclick="logout()">🔒 Logout</a></li>
+        </ul>
+    </aside>
+
+    <div class="overlay" id="overlay"></div><section class="tasks-hero">
+        <div class="container">
+            <h2>All Your Tasks in One Place</h2>
+            <p>View, manage, and organize all your tasks efficiently.</p>
+        </div>
+    </section>
+
+    <div class="section-gap"></div>
+
+    <main>
+        <!-- Tasks Container -->
+        <div class="tasks-container" id="Tasks">
+            <div class="empty-card">
+                <h2>📝 Your Tasks</h2>
+                <p>No tasks yet. Click the button below to add your first task!</p>
+                <a href="add-task.html" class="add-task2" style="text-decoration: none;">+ Add Task</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-column">
+                <h3>SmartToDo</h3>
+                <p>Your intelligent task management solution designed to boost productivity and organization.</p>
+            </div>
+            <div class="footer-column" id="footer">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../HTML/index.html">Home</a></li>
+                    <li><a href="../HTML/Features.html">Features</a></li>
+                    <li><a href="../HTML/about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li>Work</li>
+                    <li>Personal</li>
+                    <li>Study</li>
+                    <li>Health</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>annin@smarttodo.com</li>
+                    <li>9444446384</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 SmartToDo Manager | MCA Project</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="../js/MyTasks.js"></script>
+</body>
+</html>

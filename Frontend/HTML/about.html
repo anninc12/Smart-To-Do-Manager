@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>About Smart ToDo Manager | Organize Your Tasks Efficiently</title>
+    <meta name="description"
+        content="Learn about Smart ToDo Manager - our mission, how it works, and what makes our task management platform different and effective.">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <style>
+        /* Additional styles specific to the about page */
+        .team-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-img {
+            height: 200px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 3rem;
+        }
+
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .member-info h3 {
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .member-role {
+            color: #6c757d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4e73df;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid #4e73df;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -13px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -13px;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .testimonials-section {
+            padding: 80px 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #6c757d;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 18px;
+            }
+
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <h1>✅ Smart ToDo</h1>
+                <ul class="links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Features.html">Features</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="header-btn" id="auth-buttons">
+                    <a href="Registration.html">Register</a>
+                    <a href="Login.html">Login</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <script>
+        // Check if user is logged in and update header
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUser = localStorage.getItem('currentUser');
+            const authButtons = document.getElementById('auth-buttons');
+
+            if (currentUser) {
+                authButtons.innerHTML = `
+                        <a href="../HTML/Task-Manager.html">My Tasks</a>
+                        <a href="#" onclick="logout()">Logout</a>
+                    `;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        }
+    </script>
+    <section class="features-hero">
+        <div class="container">
+            <h2>Stay Organized. Get More Done.</h2>
+            <p>Smart ToDo gives you the tools to manage tasks effortlessly, focus on priorities, and boost productivity
+                without the stress.</p>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-header">
+                <h2>About Smart ToDo</h2>
+                <p class="about-sub">
+                    A modern task management platform designed to keep you organized, reduce stress, and help you
+                    accomplish more — intelligently.
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <article class="about-card">
+                    <div class="about-icon" aria-hidden="true">🎯</div>
+                    <h3>Our Mission</h3>
+                    <p>
+                        To simplify productivity by giving users a clean, reliable way to plan,
+                        prioritize and complete their most important work without distraction.
+                    </p>
+                    <ul class="about-list">
+                        <li>Reduce task overload and mental clutter</li>
+                        <li>Focus on what truly matters</li>
+                        <li>Make every day productive and fulfilling</li>
+                    </ul>
+                </article>
+                <article class="about-card">
+                    <div class="about-icon" aria-hidden="true">⚙️</div>
+                    <h3>How It Works</h3>
+                    <p>
+                        Create tasks, assign priority & due dates, and track progress in one intuitive dashboard.
+                        Advanced filters, search and analytics help you focus and measure results.
+                    </p>
+                    <ul class="about-list">
+                        <li>Create & prioritize tasks effortlessly</li>
+                        <li>Filter, search and sort instantly</li>
+                        <li>Track completion & receive smart alerts</li>
+                    </ul>
+                </article>
+                <article class="about-card">
+                    <div class="about-icon" aria-hidden="true">🚀</div>
+                    <h3>The Smart Difference</h3>
+                    <p>
+                        We combine a simple UI with intelligent features — analytics, overdue highlighting,
+                        and fast search — so you get results instead of busywork.
+                    </p>
+                    <ul class="about-list">
+                        <li>Actionable productivity analytics</li>
+                        <li>Smart overdue & reminder system</li>
+                        <li>Designed for clarity & speed</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container" id="footer">
+            <div class="footer-column">
+                <h3>SmartToDo</h3>
+                <p>Your intelligent task management solution designed to boost productivity and organization.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../HTML/index.html">Home</a></li>
+                    <li><a href="../HTML/Features.html">Features</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li>Work</li>
+                    <li>Personal</li>
+                    <li>Study</li>
+                    <li>Health</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>annin@smarttodo.com</li>
+                    <li>9444646284</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Smart ToDo Manager | MCA Project</p>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+
+<style>
+    .features {
+
+        margin-top: 80px;
+        background-color: #ffffff;
+    }
+
+    .features-hero {
+        margin-top: 80px;
+        background: linear-gradient(135deg, #0B1F3A, #004080);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+    }
+
+    .features-hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .features-hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+</style>

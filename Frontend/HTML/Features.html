@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smart ToDo Manager | Organize Your Tasks Efficiently</title>
+    <link rel="stylesheet" href="../CSS/index.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <h1>✅ Smart ToDo</h1>
+                <ul class="links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Features.html">Features</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="header-btn" id="auth-buttons">
+                    <a href="Registration.html">Register</a>
+                    <a href="Login.html">Login</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <script>
+        // Check if user is logged in and update header
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUser = localStorage.getItem('currentUser');
+            const authButtons = document.getElementById('auth-buttons');
+
+            if (currentUser) {
+                authButtons.innerHTML = `
+                        <a href="../HTML/Task-Manager.html">My Tasks</a>
+                        <a href="#" onclick="logout()">Logout</a>
+                    `;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        }
+    </script>
+    <style>
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        nav h1 {
+            color: #0B1F3A;
+        }
+
+        .links {
+            display: flex;
+            list-style: none;
+        }
+
+        .links li {
+            margin-left: 30px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .links a:hover {
+            color: #3498db;
+        }
+
+        .header-btn {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-btn a {
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .header-btn a:first-child {
+            background: linear-gradient(135deg, #0B1F3A, #004080);
+            border: 2px solid #d7e9f5;
+            color: white;
+        }
+
+        .header-btn a:last-child {
+            background: transparent;
+            border: 2px solid #3498db;
+            color: #3498db;
+        }
+
+        .header-btn a:first-child:hover {
+            background: #2980b9;
+            color: white;
+        }
+
+        .header-btn a:last-child:hover {
+            background: linear-gradient(135deg, #0B1F3A, #004080);
+            color: white;
+            border-color: #3498db;
+        }
+
+        .features {
+
+            margin-top: 80px;
+            background-color: #ffffff;
+        }
+
+        .features-hero {
+
+            background: linear-gradient(135deg, #0B1F3A, #004080);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .features-hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .features-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+    </style>
+    <section class="features" id="features" style="padding-top:0;">
+        <section class="features-hero">
+            <div class="container">
+                <h2>Powerful Features Designed for Productivity</h2>
+                <p>Discover how Smart ToDo helps you organize tasks, prioritize work, and achieve more every day</p>
+            </div>
+        </section>
+        <div class="container" style="padding-top:45px;">
+            <div class="feature-title">
+                <h2>Powerful Features</h2>
+                <p>Everything you need to manage your tasks effectively</p>
+            </div>
+            <div class="feature-list">
+                <div class="feature-items">
+                    <h3>📋 Task Management</h3>
+                    <p>Full CRUD functionality with detailed attributes including descriptions, due dates, and status
+                        tracking.</p>
+                </div>
+                <div class="feature-items">
+                    <h3>Smart Filtering</h3>
+                    <p>Filter tasks by
+                        <span style="background-color:#da6c75; color:white; padding:2px 6px; border-radius:4px;">High</span>,
+                        <span style="background-color:#d9b035; color:white; padding:2px 6px; border-radius:4px;">Medium</span> ,
+                        <span style="background-color:#437a50; color:white; padding:2px 6px; border-radius:4px;">Low</span> priority, status, or categories to focus on what matters.
+                    </p>
+                </div>
+                <div class="feature-items">
+                    <h3>🔎 Advanced Search</h3>
+                    <p>Find tasks quickly with powerful search functionality across titles and descriptions, matching
+                        your dashboard's search box.</p>
+                </div>
+                <div class="feature-items">
+                    <h3>⏰Overdue Alerts</h3>
+                    <p>Automatic highlighting of overdue tasks to ensure you never miss important deadlines.</p>
+                </div>
+                <div class="feature-items">
+                    <h3>📊Task Analytics</h3>
+                    <p>Track your productivity with comprehensive statistics on pending, completed, and overdue tasks.
+                    </p>
+                </div>
+                <div class="feature-items">
+                    <h3>📱Responsive Design</h3>
+                    <p>Access your tasks from any device with our mobile-first responsive interface.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-column">
+                <h3>SmartToDo</h3>
+                <p>Your intelligent task management solution designed to boost productivity and organization.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../HTML/index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li>Work</li>
+                    <li>Personal</li>
+                    <li>Study</li>
+                    <li>Health</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>annin@smarttodo.com</li>
+                    <li>9444646284</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Smart ToDo Manager | MCA Project</p>
+        </div>
+    </footer>
+</body>
+
+</html>

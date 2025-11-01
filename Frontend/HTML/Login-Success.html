@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Success - Smart ToDo</title>
+    <link rel="icon" href="../assests/icons/login.png">
+    <style>
+        body 
+        {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0B1F3A, #004080);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .success-box 
+        {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .checkmark 
+        {
+            font-size: 80px;
+            color: #28A745; 
+        }
+        h1 
+        {
+            color: #0B1F3A;
+            margin: 20px 0 10px;
+        }
+        p 
+        {
+            color: #5c6b7b;
+            font-size: 16px;
+        }
+        .btn 
+        {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #0B1F3A, #004080);
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(11, 31, 58, 0.3);
+        }
+        .btn:hover 
+        {
+            background: linear-gradient(135deg, #004080, #0B1F3A);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="success-box">
+        <div class="checkmark">✔</div>
+        <h1>Login Successful!</h1>
+        <p>Welcome back! Redirecting to your Smart ToDo Manager...</p>
+        <button class="btn" onclick="goToTaskManager()">Go to Dashboard</button>
+    </div>
+    <script>
+        function goToTaskManager() 
+        {
+            window.location.href = "Task-Manager.html";
+        }
+        setTimeout(goToTaskManager,2500);
+    </script>
+</body>
+</html>

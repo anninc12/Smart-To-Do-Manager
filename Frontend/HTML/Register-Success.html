@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful</title>
+    <link rel="stylesheet" href="../CSS/Registration.css">
+    <style>
+        body 
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0B1F3A, #004080);
+            font-family: Arial, sans-serif;
+        }
+        .message-box 
+        {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .message-box h1 
+        {
+            color: #28A745; 
+        }
+        .message-box p
+        {
+            color: #5c6b7b;
+            font-size: 18px;;
+        }
+        .message-box a 
+        {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #28A745; 
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .message-box a:hover 
+        {
+            background: #28A745; 
+        }
+        .btn 
+        {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #0B1F3A, #004080);
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(11, 31, 58, 0.3);
+        }
+        .btn:hover 
+        {
+            background: linear-gradient(135deg, #004080, #0B1F3A);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <h1>🎉 Account created successfully</h1>
+        <p>Start exploring now!</p>
+        <button class="btn" onclick="goToTaskManager()">Go to Dashboard</button>
+    </div>
+    <script>
+        function goToTaskManager() 
+        {
+            window.location.href = "Task-Manager.html";
+        }
+        setTimeout(goToTaskManager,2500);
+    </script>
+</body>
+</html>

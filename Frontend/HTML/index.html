@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smart ToDo Manager | Organize Your Tasks Efficiently</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/index.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <h1>✅ Smart ToDo</h1>
+                <ul class="links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Features.html" target="_blank">Features</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="header-btn" id="auth-buttons">
+                    <a href="../HTML/Registration.html">Register</a>
+                    <a href="../HTML/Login.html">Login</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <script>
+        // Check if user is logged in and update header
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUser = localStorage.getItem('currentUser');
+            const authButtons = document.getElementById('auth-buttons');
+            const getStartedBtn = document.querySelector('.buttons .btn');
+            const ctaBtn = document.querySelector('.cta-section .btn');
+
+            if (currentUser) {
+                authButtons.innerHTML = `
+                <a href="../HTML/Task-Manager.html">My Tasks</a>
+                <a href="#" onclick="logout()">Logout</a>
+            `;
+
+                // Update buttons for logged-in users
+                if (getStartedBtn) {
+                    getStartedBtn.textContent = "Go To My Tasks";
+                    getStartedBtn.href = "../HTML/Task-Manager.html";
+                }
+
+                if (ctaBtn) {
+                    ctaBtn.textContent = "Go To Dashboard";
+                    ctaBtn.href = "../HTML/Task-Manager.html";
+                }
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        }
+    </script>
+    <section class="section1" id="home">
+        <div class="container">
+            <h1>Organize Your Tasks <br>Efficiently</h1>
+            <p>Smart ToDo Manager helps you boost productivity with powerful task management features and intuitive
+                interface.</p>
+            <div class="buttons">
+                <a href="../HTML/Registration.html" class="btn">Get Started</a>
+                <a href="#features" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+    <section class="features" id="features">
+        <div class="container">
+            <div class="feature-title">
+                <h2>Powerful Features</h2>
+                <p>Everything you need to manage your tasks effectively</p>
+            </div>
+            <div class="feature-list">
+                <div class="feature-items">
+                    <h3>📋 Task Management</h3>
+                    <p>Full CRUD functionality with detailed attributes including descriptions, due dates, and status
+                        tracking.</p>
+                </div>
+                <div class="feature-items">
+                    <h3>🧠 Smart Filtering</h3>
+                    <p>Filter tasks by
+                        <span
+                            style="background-color:#da6c75; color:white; padding:2px 6px; border-radius:4px;">High</span>
+                        ,
+                        <span
+                            style="background-color:#d9b035; color:white; padding:2px 6px; border-radius:4px;">Medium</span>
+                        , or
+                        <span
+                            style="background-color:#437a50; color:white; padding:2px 6px; border-radius:4px;">Low</span>
+                        priority, status, or categories to focus on what matters.
+                    </p>
+                </div>
+                <div class="feature-items">
+                    <h3>🔎 Advanced Search</h3>
+                    <p>Find tasks quickly with powerful search functionality across titles and descriptions, matching
+                        your dashboard's search box.</p>
+                </div>
+                <div class="feature-items">
+                    <h3>⏰Overdue Alerts</h3>
+                    <p>Automatic highlighting of overdue tasks to ensure you never miss important deadlines.</p>
+                </div>
+                <div class="feature-items">
+                    <h3>📊Task Analytics</h3>
+                    <p>Track your productivity with comprehensive statistics on pending, completed, and overdue tasks.
+                    </p>
+                </div>
+                <div class="feature-items">
+                    <h3>📱Responsive Design</h3>
+                    <p>Access your tasks from any device with our mobile-first responsive interface.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-header">
+                <h2>About Smart ToDo</h2>
+                <p class="about-sub">
+                    A modern task platform built to keep you organized, reduce stress, and help you get more done —
+                    smartly.
+                </p>
+            </div>
+            <div class="about-grid">
+                <article class="about-card">
+                    <div class="about-icon" aria-hidden="true">🎯</div>
+                    <h3>Our Mission</h3>
+                    <p>
+                        To simplify productivity by giving users a clean, reliable way to plan,
+                        prioritize and complete their most important work without distraction.
+                    </p>
+                    <ul class="about-list">
+                        <li>Reduce task overload</li>
+                        <li>Focus on what matters</li>
+                        <li>Make every day productive</li>
+                    </ul>
+                </article>
+                <article class="about-card">
+                    <div class="about-icon" aria-hidden="true">⚙️</div>
+                    <h3>How It Works</h3>
+                    <p>
+                        Create tasks, assign priority & due dates, and track progress in one dashboard.
+                        Filters, search and analytics help you focus and measure results.
+                    </p>
+                    <ul class="about-list">
+                        <li>Create & prioritize tasks</li>
+                        <li>Filter, search and sort instantly</li>
+                        <li>Track completion & overdue alerts</li>
+                    </ul>
+                </article>
+                <article class="about-card">
+                    <div class="about-icon" aria-hidden="true">🚀</div>
+                    <h3>The Smart Difference</h3>
+                    <p>
+                        We combine a simple UI with smart features — analytics, overdue highlighting,
+                        and fast search — so you get results instead of busywork.
+                    </p>
+                    <ul class="about-list">
+                        <li>Actionable analytics</li>
+                        <li>Overdue & reminder highlights</li>
+                        <li>Designed for clarity & speed</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready To Boost Your Productivity?</h2>
+            <p>Join thousands of users who are managing their tasks more efficiently with SmartToDo.</p>
+            <a href="../HTML/Registration.html" class="btn">Start Managing Tasks Now</a>
+        </div>
+    </section>
+    <footer>
+        <div class="container" id="footer">
+            <div class="footer-column">
+                <h3>SmartToDo</h3>
+                <p>Your intelligent task management solution designed to boost productivity and organization.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="../HTML/Features.html">Features</a></li>
+                    <li><a href="../HTML/about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li>Work</li>
+                    <li>Personal</li>
+                    <li>Study</li>
+                    <li>Health</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>annin@smarttodo.com</li>
+                    <li>9444646284</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Smart ToDo Manager | MCA Project</p>
+        </div>
+    </footer>
+</body>
+
+</html>

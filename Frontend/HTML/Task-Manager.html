@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Task Manager</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/Task-Manager.css">
+</head>
+
+<body>
+    <header>
+        <div class="container1">
+            <nav>
+                <div class="nav-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <h1>✅<span style="color:#0047b3;">Smart</span><span style="color:#28a745;">ToDo</span></h1>
+                </div>
+                <ul class="links">
+                    <li><a href="../HTML/index.html">Home</a></li>
+                    <li><a href="../HTML/Features.html" target="_blank">Features</a></li>
+                    <li><a href="../HTML/about.html">About</a></li>
+                </ul>
+                <div class="header-btn">
+                    <a href="#" onclick="logout()">
+                        <img src="../assests/icons/lock.png" alt="Logout"
+                            style="width:40px; height:40px; vertical-align: middle; margin-right:8px;">
+                        Logout
+                    </a>
+                </div>
+
+                <script>
+                    function logout() {
+                        localStorage.removeItem('currentUser');
+                        window.location.href = '../HTML/index.html';
+                    }
+                </script>
+            </nav>
+        </div>
+    </header>
+    <script>
+        // Check if user is logged in and update header
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                window.location.href = '../HTML/index.html';
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = '../HTML/index.html';
+        }
+    </script>
+    <aside class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="../HTML/Task-Manager.html">📋 Dashboard</a></li>
+            <li><a href="../HTML/Add-Task.html">🎯 Add Tasks</a></li>
+            <li><a href="../HTML/MyTasks.html">📂 My Tasks</a></li>
+            <li><a href="#quick-actions" id="priority-filter-link">⚡ Quick Actions</a></li>
+            <li><a href="../HTML/index.html" onclick="logout()">🔒 Logout</a></li>
+        </ul>
+    </aside>
+    <div class="overlay" id="overlay"></div>
+    <section class="tasks-hero">
+        <div class="container">
+            <h2>Manage Your Tasks Efficiently</h2>
+            <p>Track your to-dos, set priorities, and stay focused on what matters most.</p>
+        </div>
+    </section>
+    <div class="section-gap"></div>
+    <main>
+        <div class="app-header">
+            <h1>SMART TODO MANAGER</h1>
+            <p>Organize your tasks efficiently and boost productivity</p>
+        </div>
+        <div class="nav-container">
+            <nav class="nav-bar">
+                <div class="dropdown-container">
+                    <div class="dropdown">
+                        <div class="dropdown-title">All Status ▼</div>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item" data-filter="status" data-value="all">All Status</a>
+                            <a href="#" class="dropdown-item" data-filter="status" data-value="Pending">Pending</a>
+                            <a href="#" class="dropdown-item" data-filter="status" data-value="In Progress">In
+                                Progress</a>
+                            <a href="#" class="dropdown-item" data-filter="status" data-value="Completed">Completed</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="dropdown-title">All Priorities ▼</div>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item" data-filter="priority" data-value="all">All Priorities</a>
+                            <a href="#" class="dropdown-item" data-filter="priority" data-value="High">High</a>
+                            <a href="#" class="dropdown-item" data-filter="priority" data-value="Medium">Medium</a>
+                            <a href="#" class="dropdown-item" data-filter="priority" data-value="Low">Low</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="dropdown-title">All Categories ▼</div>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item" data-filter="category" data-value="all">All Categories</a>
+                            <a href="#" class="dropdown-item" data-filter="category" data-value="Work">Work</a>
+                            <a href="#" class="dropdown-item" data-filter="category" data-value="Personal">Personal</a>
+                            <a href="#" class="dropdown-item" data-filter="category" data-value="Study">Study</a>
+                            <a href="#" class="dropdown-item" data-filter="category" data-value="Health">Health</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-controls">
+                    <div class="search-box">
+                        <input type="text" class="search-input" id="task-search"
+                            placeholder="🔍  Search  tasks............">
+                        <button class="search-clear" id="search-clear" style="display:none;">✕</button>
+                    </div>
+                    <div class="sort-dropdown">
+                        <div class="dropdown-title">Sort By ▼</div>
+                        <div id="sort-tasks">
+                            <a href="#" class="dropdown-item" data-sort="newest">Newest First</a>
+                            <a href="#" class="dropdown-item" data-sort="oldest">Oldest First</a>
+                            <a href="#" class="dropdown-item" data-sort="dueDate">Due Date</a>
+                            <a href="#" class="dropdown-item" data-sort="priority">Priority</a>
+                            <a href="#" class="dropdown-item" data-sort="title">Title (A-Z)</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="add-task">
+                    <a href="add-task.html" class="add-task-btn" style="text-decoration: none; display: inline-block;">
+                        + Add Task
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div class="container2">
+            <div class="status-container">
+                <div class="status">
+                    <h3><span class="emoji">📊</span> Total Tasks</h3>
+                    <p id="total-tasks">0</p>
+                </div>
+                <div class="status">
+                    <h3><span class="emoji">⏳</span> Pending</h3>
+                    <p id="pending-tasks">0</p>
+                </div>
+                <div class="status">
+                    <h3><span class="emoji">✅</span> Completed</h3>
+                    <p id="completed-tasks">0</p>
+                </div>
+                <div class="status">
+                    <h3><span class="emoji">❌</span> Overdue</h3>
+                    <p id="overdue-tasks">0</p>
+                </div>
+                <div class="status">
+                    <h3><span class="emoji">⏰</span> Due Today</h3>
+                    <p id="due-today-tasks">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress bar section -->
+        <div class="progress-container">
+            <div class="progress-header">
+                <h3>Completion Progress</h3>
+                <span id="completion-percentage">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="tasks-container" id="Tasks">
+            <div class="empty-card">
+                <h2>📝 Your Tasks</h2>
+                <p>No tasks yet. Click the button below to add your first task!</p>
+                <a href="add-task.html" class="add-task2" style="text-decoration: none;">+ Add Task</a>
+            </div>
+        </div>
+
+        <!-- Quick Actions Panel -->
+        <div class="quick-actions" id="quick-actions">
+            <div class="quick-actions-header">
+                <h1>⚡ Quick Actions</h1>
+                <p>Perform bulk operations on your tasks</p>
+            </div>
+            <div class="action-buttons">
+                <button class="action-btn" id="mark-all-completed">
+                    <i class="fas fa-check-circle"></i> Mark All Completed
+                </button>
+                <button class="action-btn" id="clear-completed">
+                    <i class="fas fa-trash"></i> Clear Completed
+                </button>
+                <button class="action-btn" id="export-tasks">
+                    <i class="fas fa-download"></i> Export Tasks
+                </button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-column">
+                <h3>SmartToDo</h3>
+                <p>Your intelligent task management solution designed to boost productivity and organization.</p>
+            </div>
+            <div class="footer-column" id="footer">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../HTML/index.html">Home</a></li>
+                    <li><a href="../HTML/Features.html">Features</a></li>
+                    <li><a href="../HTML/about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li>Work</li>
+                    <li>Personal</li>
+                    <li>Study</li>
+                    <li>Health</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>annin@smarttodo.com</li>
+                    <li>9444446384</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Smart ToDo Manager | MCA Project</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="../js/Task-Manager.js"></script>
+
+</body>
+
+</html>
